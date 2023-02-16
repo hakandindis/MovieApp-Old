@@ -22,8 +22,15 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
+            debuggable true
             minifyEnabled false
+            shrinkResources false
+        }
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -33,6 +40,17 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    flavorDimensions 'movie'
+    productFlavors {
+        development {
+            dimension 'movie'
+            versionNameSuffix "-development"
+        }
+        store {
+            dimension 'movie'
+            versionNameSuffix "-store"
+        }
     }
 }
 
